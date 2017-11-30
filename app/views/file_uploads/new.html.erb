@@ -1,0 +1,6 @@
+<h1>Upload for Bucket <%= @bucket.name %></h1>
+
+<%= form_with model: @bucket, url: bucket_file_uploads_path(@bucket), method: :post, local: true do |f| %>
+  <%= f.file_field :files, multiple: true %><br /><br />
+  <%= f.submit 'Upload' %>
+<% end %>
