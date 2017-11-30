@@ -1,9 +1,16 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @bucket.name %>
-</p>
+<h3><%= @bucket.name %></h3>
 
 <%= link_to 'Edit', edit_bucket_path(@bucket) %> |
-<%= link_to 'Back', buckets_path %>
+<%= link_to 'Back', buckets_path %> |
+<%= link_to 'Upload Files', new_bucket_file_upload_path(@bucket) %>
+
+
+<h5>Files</h5>
+
+<ul>
+  <% @bucket.files.each do |file| %>
+    <li><%= link_to file.filename, url_for(file) %></li>
+  <% end %>
+</ul>
