@@ -1,6 +1,8 @@
 <h1>Upload for Bucket <%= @bucket.name %></h1>
 
-<%= form_with model: @bucket, url: bucket_file_uploads_path(@bucket), method: :post, local: true do |f| %>
-  <%= f.file_field :files, multiple: true %><br /><br />
+<h4 class="progress" style="display: none">Progress: <span class="progress_count"></span>%</h4>
+
+<%= form_with model: @bucket, url: bucket_file_uploads_path(@bucket), method: :post, id: "upload_file", local: true do |f| %>
+  <%= f.file_field :files, multiple: true, direct_upload: true %><br /><br />
   <%= f.submit 'Upload' %>
 <% end %>
