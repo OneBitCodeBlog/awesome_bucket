@@ -11,6 +11,9 @@
 
 <ul>
   <% @bucket.files.each do |file| %>
-    <li><%= link_to file.filename, url_for(file) %></li>
+    <li>
+      <%= link_to file.filename, url_for(file) %>
+      <%= link_to "X", bucket_file_upload_path(@bucket, file), method: :delete, data: { confirm: "Tem certeza?" } %>
+    </li>
   <% end %>
 </ul>

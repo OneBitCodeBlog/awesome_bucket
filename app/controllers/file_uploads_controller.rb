@@ -8,4 +8,10 @@ class FileUploadsController < ApplicationController
     @bucket.files.attach(params[:bucket][:files])
     redirect_to bucket_path(@bucket)
   end
+
+  def destroy
+    @bucket = Bucket.find(params[:bucket_id])
+    @bucket.files.find(params[:id]).purge
+    redirect_to bucket_path(@bucket)
+  end
 end
